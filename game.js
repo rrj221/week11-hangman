@@ -1,5 +1,6 @@
+var inquirer = require('inquirer');
 var main = require('./main.js');
-console.log(main.letter);
+var word = require('./word.js');
 
 var currentTeamIndex;
 
@@ -16,16 +17,20 @@ function chooseRandomTeam() {
 	return currentTeam;
 }	
 
-function getCurrentTeamIndex() {
-	return currentTeamIndex;
+function playAgain() {
+	inquirer.prompt([{
+		type: 'confirm',
+		name: 'playAgain',
+		message: 'would you like to play again?'
+	}]).then(function (answers) {
+		if (answers.playAgain) {
+			word.chooseDifficulty();
+		} else {
+			console.log('maybe later... :(');
+		}
+	});
 }
 
-
-function showLetter(letter) {
-	console.log(letter)
-}
-
-module.exports.hello = 'hello there';
-module.exports.letter = 'letter from game .js: '+JSON.stringify(main, null, 2);
+//EXPORTS
 module.exports.chooseRandomTeam = chooseRandomTeam;
-module.exports.getCurrentTeamIndex = getCurrentTeamIndex;
+module.exports.playAgain = playAgain;

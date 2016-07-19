@@ -10,23 +10,13 @@ var game = require('./game.js');
 var word = require('./word.js');
 var letter = require('./letter.js');
 
-console.log('Welcome to NBA Hangman by Ryan Jarrell');
-console.log('');
-// console.log('Press any key to continue...');
 
-module.exports.team = game.chooseRandomTeam();
-console.log(1, module.exports.team);
-module.exports.display = letter.initializeDisplayArray(module.exports.team);
-console.log(module.exports.display);
+//GAME///////////
+console.log('\n////////////////////////////////', '\n');
+console.log('Welcome to NBA Hangman by Ryan Jarrell','\n');
+console.log('Powered by Node.js\n');
 
-word.askForLetter(false);
-
-
-
-
-
-// console.log(game.chooseRandomTeam());        this works
-// console.log(game.getCurrentTeamIndex());     this works
+word.start();
 
 
 
