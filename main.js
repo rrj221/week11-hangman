@@ -9,9 +9,12 @@ var inquirer = require('inquirer');
 var game = require('./game.js');
 var word = require('./word.js');
 var letter = require('./letter.js');
+var player = require('play-sound-v12')(opts = {});
 
 
 //GAME///////////
+player.play('./sounds/welcome.mp3');
+
 console.log('\n////////////////////////////////', '\n');
 console.log('Welcome to NBA Hangman by Ryan Jarrell','\n');
 console.log('Powered by Node.js\n');

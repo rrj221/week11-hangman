@@ -2,6 +2,7 @@ var inquirer = require('inquirer');
 var main = require('./main.js');
 var letter = require('./letter.js');
 var game = require('./game.js');
+var Nyancat = require('nyansole');
 
 var guessedArray = [];
 var teamGlobal = '';
@@ -42,11 +43,16 @@ function chooseDifficulty() {
 	});
 }
 
+//this is where most of the game happens
 function askForLetter(youWon, counter, startingGuesses, team) {
 	if (counter >= startingGuesses) {
 		return letter.lost();
 	} else if (youWon) {
-		game.playAgain();
+		var nyancat = (new Nyancat()).start();
+		setTimeout(function() {
+			nyancat.end();
+			game.playAgain();
+		}, 10 * 1000);
 	} else if (!youWon) {
 		inquirer.prompt([{
 			name: 'letter',
